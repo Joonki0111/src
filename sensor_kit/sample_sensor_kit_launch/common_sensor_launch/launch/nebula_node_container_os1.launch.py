@@ -180,19 +180,6 @@ def launch_setup(context, *args, **kwargs):
         )
     )
 
-    # nodes.append(
-    #     ComposableNode(
-    #         package="pointcloud_preprocessor",
-    #         plugin="pointcloud_preprocessor::RingOutlierFilterComponent",
-    #         name="ring_outlier_filter",
-    #         remappings=[
-    #             ("input", "rectified/pointcloud_ex"),
-    #             ("output", "pointcloud"),
-    #         ],
-    #         extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
-    #     )
-    # )
-
     # set container to run all required components in the same process
     container = ComposableNodeContainer(
         name=LaunchConfiguration("container_name"),
