@@ -104,3 +104,6 @@
 
     # The execution time which means probably NDT cannot matches scans properly. [ms]
     critical_upper_bound_exe_time_ms: 100
+
+    # Max search radius of NDT scan matching at init state. [cm]
+    max_search_radius: 200 #HJK
