@@ -14,7 +14,7 @@
   <!-- Optional parameters -->
   <!-- Modules to be launched -->
   <arg name="launch_vehicle" default="true" description="launch vehicle"/>
-  <arg name="launch_system" default="false" description="launch system"/> <!--HJK_241120-->
+  <arg name="launch_system" default="false" description="launch system"/> <!--HJK_241120 Commit[Cart v1.0, f4d8f9d]-->
   <arg name="launch_map" default="true" description="launch map"/>
   <arg name="launch_sensing" default="true" description="launch sensing"/>
   <arg name="launch_sensing_driver" default="true" description="launch sensing driver"/>
@@ -61,7 +61,7 @@
   <arg name="rviz_respawn" default="true"/>
   <!-- Perception -->
   <arg name="perception_mode" default="lidar" description="select perception mode. camera_lidar_radar_fusion, camera_lidar_fusion, lidar_radar_fusion, lidar, radar"/>
-  <arg name="traffic_light_recognition/enable_fine_detection" default="false" description="enable traffic light fine detection"/><!--HJK_240623 true-->
+  <arg name="traffic_light_recognition/enable_fine_detection" default="false" description="enable traffic light fine detection"/> <!--HJK_240623 Commit[Cart v1.0, f4d8f9d]-->
 
   <!-- Global parameters -->
   <group scoped="false">

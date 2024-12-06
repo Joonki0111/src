@@ -1,10 +1,10 @@
 <launch>
   <arg name="launch_driver" default="true"/>
-  <arg name="host_ip" default="192.168.1.200"/>
-  <arg name="use_concat_filter" default="false"/> <!--JHH 241117-->
+  <arg name="host_ip" default="192.168.1.200"/> <!--HJK Commit[Cart v1.0, f4d8f9d]-->
+  <arg name="use_concat_filter" default="false"/> <!--JHH_241117 Commit[Cart v1.0, f4d8f9d]-->
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
   <arg name="vehicle_mirror_param_file"/>
-  <arg name="use_pointcloud_container" default="true" description="launch pointcloud container"/>
+  <arg name="use_pointcloud_container" default="true" description="launch pointcloud container"/> <!--HJK Commit[Cart v1.0, f4d8f9d]-->
   <arg name="pointcloud_container_name" default="pointcloud_container"/>
 
   <group>
@@ -15,9 +15,11 @@
       <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLS128.launch.xml">
         <arg name="max_range" value="250.0"/>
         <arg name="sensor_frame" value="velodyne_top"/>
+        <!--HJK Commit[Cart v1.0, f4d8f9d] {-->
         <arg name="sensor_ip" value="0.0.0.0"/>
         <arg name="host_ip" value="0.0.0.0"/>
         <arg name="data_port" value="0.0.0.0"/>
+        <!--HJK Commit[Cart v1.0, f4d8f9d] }-->
         <arg name="scan_phase" value="300.0"/>
         <arg name="launch_driver" value="$(var launch_driver)"/>
         <arg name="vehicle_mirror_param_file" value="$(var vehicle_mirror_param_file)"/>
@@ -26,6 +28,7 @@
       </include>
     </group>
 
+    <!--HJK Commit[Cart v1.0, f4d8f9d] {-->
     <!-- <group>
       <push-ros-namespace namespace="left"/>
       <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLP16.launch.xml">
@@ -79,6 +82,7 @@
         <arg name="container_name" value="$(var pointcloud_container_name)"/>
       </include>
     </group> -->
+    <!--HJK Commit[Cart v1.0, f4d8f9d] }-->
 
     <include file="$(find-pkg-share sample_sensor_kit_launch)/launch/pointcloud_preprocessor.launch.py">
       <arg name="base_frame" value="base_link"/>
