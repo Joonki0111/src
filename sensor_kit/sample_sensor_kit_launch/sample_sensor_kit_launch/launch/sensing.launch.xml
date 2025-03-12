@@ -34,5 +34,9 @@
       <arg name="input_vehicle_velocity_topic" value="/vehicle/status/velocity_status"/>
       <arg name="output_twist_with_covariance" value="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
     </include>
+
+    <!-- ADMA Driver --> <!--HJK_250312_I-->
+    <include file="$(find-pkg-share adma_ros2_driver)/launch/adma_driver.launch.py">
+    </include>
   </group>
 </launch>
