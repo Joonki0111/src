@@ -5,3 +5,6 @@
 [submodule "sensor_component/external/adma_ros_driver"]
 	path = sensor_component/external/adma_ros_driver
 	url = https://github.com/Joonki0111/adma_ros_driver
+[submodule "sensor_component/external/ouster-ros"]
+	path = sensor_component/external/ouster-ros
+	url = https://github.com/Joonki0111/ouster-ros
