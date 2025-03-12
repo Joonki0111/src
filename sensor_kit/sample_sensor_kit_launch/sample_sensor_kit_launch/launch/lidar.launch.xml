@@ -33,9 +33,9 @@
       <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLP16.launch.xml">
         <arg name="max_range" value="5.0"/>
         <arg name="sensor_frame" value="velodyne_left"/>
-        <arg name="sensor_ip" value="192.168.1.201"/> <!--HJK_241126_F-->
+        <arg name="sensor_ip" value="192.168.1.201"/>
         <arg name="host_ip" value="$(var host_ip)"/>
-        <arg name="data_port" value="2368"/> <!--HJK_241126_F-->
+        <arg name="data_port" value="2368"/>
         <arg name="scan_phase" value="180.0"/>
         <arg name="cloud_min_angle" value="300"/>
         <arg name="cloud_max_angle" value="60"/>
@@ -51,9 +51,9 @@
       <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLP16.launch.xml">
         <arg name="max_range" value="5.0"/>
         <arg name="sensor_frame" value="velodyne_right"/>
-        <arg name="sensor_ip" value="192.168.1.202"/> <!--HJK_241126_F-->
+        <arg name="sensor_ip" value="192.168.1.202"/>
         <arg name="host_ip" value="$(var host_ip)"/>
-        <arg name="data_port" value="2369"/> <!--HJK_241126_F-->
+        <arg name="data_port" value="2369"/>
         <arg name="scan_phase" value="180.0"/>
         <arg name="cloud_min_angle" value="300"/>
         <arg name="cloud_max_angle" value="60"/>
