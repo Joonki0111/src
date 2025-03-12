@@ -2,3 +2,6 @@
 	path = universe/autoware.universe/system/qt_ros2_gui
 	url = https://github.com/Joonki0111/qt_ros2_gui.git
 	branch = Soul
+[submodule "sensor_component/external/adma_ros_driver"]
+	path = sensor_component/external/adma_ros_driver
+	url = https://github.com/Joonki0111/adma_ros_driver
