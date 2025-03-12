@@ -23,6 +23,7 @@
   <arg name="launch_planning" default="true" description="launch planning"/>
   <arg name="launch_control" default="true" description="launch control"/>
   <arg name="launch_gui" default="true" description="launch GUI"/> <!--HJK_250312_G-->
+  <arg name="launch_tf" default="true" description="launch tf"/> <!--HJK_250312_J-->
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -134,5 +135,10 @@
   <group>
     <node pkg="qt_ros2_gui" exec="qt_ros2_gui_node" name="qt_ros2_gui_node" output="screen">
     </node>
+  </group>
+
+  <!-- Tf --> <!--HJK_250312_J-->
+  <group>
+    <include file="$(find-pkg-share autoware_launch)/launch/tf.launch.xml"/>
   </group>
 </launch>
