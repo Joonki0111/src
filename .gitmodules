@@ -1,0 +1,4 @@
+[submodule "universe/autoware.universe/system/qt_ros2_gui"]
+	path = universe/autoware.universe/system/qt_ros2_gui
+	url = https://github.com/Joonki0111/qt_ros2_gui.git
+	branch = Soul
