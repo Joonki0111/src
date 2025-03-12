@@ -22,6 +22,7 @@
   <arg name="launch_perception" default="true" description="launch perception"/>
   <arg name="launch_planning" default="true" description="launch planning"/>
   <arg name="launch_control" default="true" description="launch control"/>
+  <arg name="launch_gui" default="true" description="launch GUI"/> <!--HJK_250312_G-->
   <!-- Global parameters -->
   <arg name="use_sim_time" default="false" description="use_sim_time"/>
   <!-- Vehicle -->
@@ -127,5 +128,11 @@
       if="$(var rviz)"
       respawn="$(var rviz_respawn)"
     />
+  </group>
+
+  <!-- GUI --> <!--HJK_250312_G-->
+  <group>
+    <node pkg="qt_ros2_gui" exec="qt_ros2_gui_node" name="qt_ros2_gui_node" output="screen">
+    </node>
   </group>
 </launch>
