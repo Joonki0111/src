@@ -132,13 +132,13 @@
   </group>
 
   <!-- GUI --> <!--HJK_250312_G-->
-  <group>
-    <node pkg="qt_ros2_gui" exec="qt_ros2_gui_node" name="qt_ros2_gui_node" output="screen">
+  <group if="$(var launch_gui)">
+    <node pkg="qt_ros2_gui" exec="exec" name="qt_ros2_gui_node" output="screen">
     </node>
   </group>
 
   <!-- Tf --> <!--HJK_250312_J-->
-  <group>
+  <group if="$(var launch_tf)">
     <include file="$(find-pkg-share autoware_launch)/launch/tf.launch.xml"/>
   </group>
 </launch>
