@@ -11,3 +11,6 @@
 [submodule "universe/autoware.universe/vehicle/ros2_socketcan"]
 	path = universe/autoware.universe/vehicle/ros2_socketcan
 	url = https://github.com/Joonki0111/ros2_socketcan
+[submodule "universe/autoware.universe/vehicle/roscco"]
+	path = universe/autoware.universe/vehicle/roscco
+	url = https://github.com/Joonki0111/roscco.git
