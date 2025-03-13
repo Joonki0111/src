@@ -40,4 +40,8 @@
       <arg name="interface" value="can0"/>
     </include>
   </group>
+
+  <!--HJK_250313_E-->
+  <include file="$(find-pkg-share roscco)/launch/roscco.launch.xml">
+  </include>
 </launch>
