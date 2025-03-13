@@ -103,7 +103,7 @@ def launch_setup(context, *args, **kwargs):
             plugin="pointcloud_preprocessor::CropBoxFilterComponent",
             name="crop_box_filter_self",
             remappings=[
-                ("input", "/ouster/points"),
+                ("input", "ouster/points"),
                 ("output", "self_cropped/pointcloud_ex"),
             ],
             parameters=[cropbox_parameters],
@@ -142,7 +142,7 @@ def launch_setup(context, *args, **kwargs):
                 ("~/input/twist", "/sensing/vehicle_velocity_converter/twist_with_covariance"),
                 ("~/input/imu", "/sensing/imu/imu_data"),
                 ("~/input/pointcloud", "mirror_cropped/pointcloud_ex"),
-                ("~/output/pointcloud", "/sensing/lidar/concatenated/pointcloud"), #HJK_250312_F
+                ("~/output/pointcloud", "lidar/concatenated/pointcloud"), #HJK_250312_F
             ],
             extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
         )
