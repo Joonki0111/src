@@ -86,38 +86,6 @@ def launch_setup(context, *args, **kwargs):
 
     nodes = []
 
-    nodes.append(
-        ComposableNode(
-            package="nebula_ros",
-            plugin=sensor_make + "DriverRosWrapper",
-            name=sensor_make.lower() + "_driver_ros_wrapper_node",
-            parameters=[
-                {
-                    "calibration_file": sensor_calib_fp,
-                    "sensor_model": sensor_model,
-                    **create_parameter_dict(
-                        "host_ip",
-                        "sensor_ip",
-                        "data_port",
-                        "return_mode",
-                        "min_range",
-                        "max_range",
-                        "frame_id",
-                        "scan_phase",
-                        "cloud_min_angle",
-                        "cloud_max_angle",
-                        "dual_return_distance_threshold",
-                    ),
-                },
-            ],
-            remappings=[
-                ("aw_points", "pointcloud_raw"),
-                ("aw_points_ex", "pointcloud_raw_ex"),
-            ],
-            extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
-        )
-    )
-
     cropbox_parameters = create_parameter_dict("input_frame", "output_frame")
     cropbox_parameters["negative"] = True
 
@@ -135,7 +103,7 @@ def launch_setup(context, *args, **kwargs):
             plugin="pointcloud_preprocessor::CropBoxFilterComponent",
             name="crop_box_filter_self",
             remappings=[
-                ("input", "pointcloud_raw_ex"),
+                ("input", "/ouster/points"),
                 ("output", "self_cropped/pointcloud_ex"),
             ],
             parameters=[cropbox_parameters],
@@ -174,20 +142,7 @@ def launch_setup(context, *args, **kwargs):
                 ("~/input/twist", "/sensing/vehicle_velocity_converter/twist_with_covariance"),
                 ("~/input/imu", "/sensing/imu/imu_data"),
                 ("~/input/pointcloud", "mirror_cropped/pointcloud_ex"),
-                ("~/output/pointcloud", "rectified/pointcloud_ex"),
-            ],
-            extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
-        )
-    )
-
-    nodes.append(
-        ComposableNode(
-            package="pointcloud_preprocessor",
-            plugin="pointcloud_preprocessor::RingOutlierFilterComponent",
-            name="ring_outlier_filter",
-            remappings=[
-                ("input", "rectified/pointcloud_ex"),
-                ("output", "pointcloud"),
+                ("~/output/pointcloud", "/sensing/lidar/concatenated/pointcloud"), #HJK_250312_F
             ],
             extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
         )
@@ -262,7 +217,7 @@ def generate_launch_description():
             DeclareLaunchArgument(name, default_value=default_value, description=description)
         )
 
-    add_launch_arg("sensor_model", description="sensor model name")
+    # add_launch_arg("sensor_model", description="sensor model name")
     add_launch_arg("config_file", "", description="sensor configuration file")
     add_launch_arg("launch_driver", "True", "do launch driver")
     add_launch_arg("setup_sensor", "True", "configure sensor")
@@ -277,7 +232,7 @@ def generate_launch_description():
     add_launch_arg("data_port", "2368", "device data port number")
     add_launch_arg("gnss_port", "2380", "device gnss port number")
     add_launch_arg("packet_mtu_size", "1500", "packet mtu size")
-    add_launch_arg("rotation_speed", "1200", "rotational frequency") #HJK_241126_I
+    add_launch_arg("rotation_speed", "600", "rotational frequency")
     add_launch_arg("dual_return_distance_threshold", "0.1", "dual return distance threshold")
     add_launch_arg("frame_id", "lidar", "frame id")
     add_launch_arg("input_frame", LaunchConfiguration("base_frame"), "use for cropbox")
