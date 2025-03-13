@@ -12,7 +12,7 @@
 
     <group>
       <push-ros-namespace namespace="top"/>
-      <include file="$(find-pkg-share common_sensor_launch)/launch/velodyne_VLS128.launch.xml">
+      <include file="$(find-pkg-share common_sensor_launch)/launch/OS1_128.launch.xml">
         <arg name="max_range" value="250.0"/>
         <arg name="sensor_frame" value="velodyne_top"/>
         <!--HJK_241126_F {-->
