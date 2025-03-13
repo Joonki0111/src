@@ -1,0 +1,3 @@
+bool steering_status
+bool brake_status
+bool throttle_status
