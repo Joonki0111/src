@@ -8,3 +8,6 @@
 [submodule "sensor_component/external/ouster-ros"]
 	path = sensor_component/external/ouster-ros
 	url = https://github.com/Joonki0111/ouster-ros
+[submodule "universe/autoware.universe/vehicle/ros2_socketcan"]
+	path = universe/autoware.universe/vehicle/ros2_socketcan
+	url = https://github.com/Joonki0111/ros2_socketcan
