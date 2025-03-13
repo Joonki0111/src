@@ -24,4 +24,20 @@
       <arg name="initial_engage_state" value="$(var initial_engage_state)"/>
     </include>
   </group>
+
+  <!--HJK_250313_D-->
+  <group>
+    <push-ros-namespace namespace="socketcan/vehicle"/>
+    <include file="$(find-pkg-share ros2_socketcan)/launch/socket_can_receiver.launch.py">
+      <arg name="interface" value="can1"/>
+    </include>
+  </group>
+  
+  <!--HJK_250313_D-->
+  <group>
+    <push-ros-namespace namespace="socketcan/roscco"/>
+    <include file="$(find-pkg-share ros2_socketcan)/launch/socket_can_receiver.launch.py">
+      <arg name="interface" value="can0"/>
+    </include>
+  </group>
 </launch>
