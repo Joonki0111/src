@@ -9,6 +9,7 @@
 
   <group>
     <group>
+      <push-ros-namespace namespace="lidar"/> <!--HJK_250315_A-->
       <include file="$(find-pkg-share common_sensor_launch)/launch/OS1_128.launch.xml">
         <arg name="max_range" value="250.0"/>
         <arg name="sensor_frame" value="os_sensor"/>
