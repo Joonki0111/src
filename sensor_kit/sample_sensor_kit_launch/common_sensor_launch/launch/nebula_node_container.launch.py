@@ -140,9 +140,9 @@ def launch_setup(context, *args, **kwargs):
             name="distortion_corrector_node",
             remappings=[
                 ("~/input/twist", "/sensing/vehicle_velocity_converter/twist_with_covariance"),
-                ("~/input/imu", "/sensing/imu_data"),  #HJK_250313_G
+                ("~/input/imu", "/sensing/imu/imu_data"),
                 ("~/input/pointcloud", "mirror_cropped/pointcloud_ex"),
-                ("~/output/pointcloud", "lidar/concatenated/pointcloud"), #HJK_250312_F
+                ("~/output/pointcloud", "concatenated/pointcloud"),
             ],
             extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
         )
