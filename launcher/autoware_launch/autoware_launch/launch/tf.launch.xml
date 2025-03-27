@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <node pkg="tf2_ros" exec="static_transform_publisher" name="base_link_to_ouster" 
-    args="0.63 0.0 1.735 0.0 0 0 base_link os_sensor"/>
+    args="0.63 0.0 1.735 0.0 0.0 0.0 base_link os_sensor"/>
 
   <node pkg="tf2_ros" exec="static_transform_publisher" name="base_link_to_gnss" 
     args="0.38 0.0 1.695 0.0 0.0 0.0 base_link gnss_link"/>
+
+  <node pkg="tf2_ros" exec="static_transform_publisher" name="base_link_to_imu_adma" 
+      args="0.45 0.0 0.45 0.0 0.0 0.0 base_link imu_link"/> <!--HJK_250327_A-->
 </launch>
