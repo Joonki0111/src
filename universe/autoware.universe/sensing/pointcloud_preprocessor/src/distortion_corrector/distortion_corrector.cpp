@@ -37,7 +37,7 @@ DistortionCorrectorComponent::DistortionCorrectorComponent(const rclcpp::NodeOpt
   }
 
   // Parameter
-  time_stamp_field_name_ = declare_parameter("time_stamp_field_name", "t");
+  time_stamp_field_name_ = declare_parameter("time_stamp_field_name", "t"); //HJK_250327_B
   use_imu_ = declare_parameter("use_imu", true);
 
   // Publisher
