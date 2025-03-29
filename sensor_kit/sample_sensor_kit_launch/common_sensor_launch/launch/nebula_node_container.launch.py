@@ -126,27 +126,27 @@ def launch_setup(context, *args, **kwargs):
             name="crop_box_filter_mirror",
             remappings=[
                 ("input", "self_cropped/pointcloud_ex"),
-                ("output", "mirror_cropped/pointcloud_ex"),
+                ("output", "concatenated/pointcloud"), #HJK_250329_A
             ],
             parameters=[cropbox_parameters],
             extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
         )
     )
-
-    nodes.append(
-        ComposableNode(
-            package="pointcloud_preprocessor",
-            plugin="pointcloud_preprocessor::DistortionCorrectorComponent",
-            name="distortion_corrector_node",
-            remappings=[
-                ("~/input/twist", "/sensing/vehicle_velocity_converter/twist_with_covariance"),
-                ("~/input/imu", "/sensing/imu/imu_data"),
-                ("~/input/pointcloud", "mirror_cropped/pointcloud_ex"),
-                ("~/output/pointcloud", "concatenated/pointcloud"),
-            ],
-            extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
-        )
-    )
+    #HJK_250329_A
+    # nodes.append(
+    #     ComposableNode(
+    #         package="pointcloud_preprocessor",
+    #         plugin="pointcloud_preprocessor::DistortionCorrectorComponent",
+    #         name="distortion_corrector_node",
+    #         remappings=[
+    #             ("~/input/twist", "/sensing/vehicle_velocity_converter/twist_with_covariance"),
+    #             ("~/input/imu", "/sensing/imu/imu_data"),
+    #             ("~/input/pointcloud", "mirror_cropped/pointcloud_ex"),
+    #             ("~/output/pointcloud", "concatenated/pointcloud"),
+    #         ],
+    #         extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],
+    #     )
+    # )
 
     # set container to run all required components in the same process
     container = ComposableNodeContainer(
