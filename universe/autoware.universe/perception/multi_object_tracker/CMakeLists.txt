@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(multi_object_tracker)
 
 find_package(autoware_cmake REQUIRED)
+find_package(diagnostic_updater REQUIRED)
 autoware_package()
 
 # Ignore -Wnonportable-include-path in Clang for mussp
@@ -36,6 +37,10 @@ set(MULTI_OBJECT_TRACKER_SRC
 
 ament_auto_add_library(multi_object_tracker_node SHARED
   ${MULTI_OBJECT_TRACKER_SRC}
+)
+
+ament_target_dependencies(multi_object_tracker_node
+  diagnostic_updater
 )
 
 target_link_libraries(multi_object_tracker_node

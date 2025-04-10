@@ -3,6 +3,7 @@ project(behavior_velocity_planner)
 
 find_package(autoware_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(grid_map_core REQUIRED)
 
 rosidl_generate_interfaces(
   ${PROJECT_NAME}
@@ -16,6 +17,10 @@ autoware_package()
 ament_auto_add_library(${PROJECT_NAME}_lib SHARED
   src/node.cpp
   src/planner_manager.cpp
+)
+
+ament_target_dependencies(${PROJECT_NAME}_lib
+  grid_map_core
 )
 
 rclcpp_components_register_node(${PROJECT_NAME}_lib
