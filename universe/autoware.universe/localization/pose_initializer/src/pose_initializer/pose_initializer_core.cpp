@@ -76,10 +76,11 @@ void PoseInitializer::on_initialize(
   const Initialize::Service::Response::SharedPtr res)
 {
   // NOTE: This function is not executed during initialization because mutually exclusive.
-  if (stop_check_ && !stop_check_->isVehicleStopped(stop_check_duration_)) {
-    throw ServiceException(
-      Initialize::Service::Response::ERROR_UNSAFE, "The vehicle is not stopped.");
-  }
+  //HJK_250411_B
+  // if (stop_check_ && !stop_check_->isVehicleStopped(stop_check_duration_)) {
+  //   throw ServiceException(
+  //     Initialize::Service::Response::ERROR_UNSAFE, "The vehicle is not stopped.");
+  // }
   try {
     change_state(State::Message::INITIALIZING);
     if (ekf_localization_trigger_) {
