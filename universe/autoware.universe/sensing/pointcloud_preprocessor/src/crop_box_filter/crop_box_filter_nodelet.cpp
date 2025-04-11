@@ -165,11 +165,12 @@ void CropBoxFilterComponent::faster_filter(
     }
   }
 
-  if (skipped_count > 0) {
-    RCLCPP_WARN_THROTTLE(
-      get_logger(), *get_clock(), 1000, "%d points contained NaN values and have been ignored",
-      skipped_count);
-  }
+  //HJK_250411_A
+  // if (skipped_count > 0) {
+  //   RCLCPP_WARN_THROTTLE(
+  //     get_logger(), *get_clock(), 1000, "%d points contained NaN values and have been ignored",
+  //     skipped_count);
+  // }
 
   output.data.resize(output_size);
 
