@@ -32,6 +32,9 @@
       <arg name="interface" value="can1"/>
     </include>
   </group>
+
+  <!--HJK_250411_C-->
+  <node pkg="autoware_interface" exec="autoware_interface_node" name="autoware_interface_node"/>
   
   <!--HJK_250313_D-->
   <group>
