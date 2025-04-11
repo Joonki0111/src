@@ -14,3 +14,6 @@
 [submodule "universe/autoware.universe/vehicle/roscco"]
 	path = universe/autoware.universe/vehicle/roscco
 	url = https://github.com/Joonki0111/roscco.git
+[submodule "universe/autoware.universe/vehicle/autoware_interface"]
+	path = universe/autoware.universe/vehicle/autoware_interface
+	url = https://github.com/Joonki0111/autoware_interface.git
