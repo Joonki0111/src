@@ -1,0 +1,6 @@
+bool is_roscco_alive
+bool is_adma_alive
+bool is_os_alive
+bool is_tc_alive
+bool is_roscco_can_alive
+bool is_vehicle_can_alive
