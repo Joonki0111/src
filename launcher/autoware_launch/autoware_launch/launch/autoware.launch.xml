@@ -7,6 +7,7 @@
   <arg name="use_pointcloud_container" default="true" description="launch pointcloud container"/>
   <arg name="pointcloud_container_name" default="pointcloud_container"/>
   <arg name="data_path" default="$(env HOME)/autoware_data" description="packages data and artifacts directory path"/>
+  <arg name="logging_mode" default="false"/>
 
   <!-- launch module preset -->
   <arg name="planning_module_preset" default="default" description="planning module preset"/>
@@ -139,6 +140,8 @@
 
   <!-- Tf --> <!--HJK_250312_J-->
   <group if="$(var launch_tf)">
-    <include file="$(find-pkg-share autoware_launch)/launch/tf.launch.xml"/>
+    <include file="$(find-pkg-share autoware_launch)/launch/tf.launch.xml">
+      <arg name="logging_mode" value="$(var logging_mode)"/>
+    </include>
   </group>
 </launch>
