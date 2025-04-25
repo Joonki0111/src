@@ -8,4 +8,12 @@
 
   <node pkg="tf2_ros" exec="static_transform_publisher" name="base_link_to_imu_adma" 
       args="0.45 0.0 0.45 0.0 0.0 0.0 base_link imu_link"/> <!--HJK_250327_A-->
+
+  <group if="$(eval &quot;'$(var launch_sensing_driver)'=='false'&quot;)">
+    <node pkg="tf2_ros" exec="static_transform_publisher" name="os_sensor_to_os_lidar" 
+      args="0.0 0.0 0.036180000000000004 0.0 0.0 1.0 0.0 os_sensor os_lidar"/>
+
+    <node pkg="tf2_ros" exec="static_transform_publisher" name="os_sensor_to_os_imu" 
+      args="0.006253 -0.011775 0.007645 0.0 0.0 0.0 1.0 os_sensor os_imu"/>
+  </group>
 </launch>

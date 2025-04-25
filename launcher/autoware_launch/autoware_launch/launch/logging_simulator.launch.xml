@@ -72,4 +72,16 @@
       <arg name="launch_sensing_driver" value="false"/>
     </include>
   </group>
+  <!-- GUI --> <!--HJK_250312_G-->
+  <group if="$(var launch_gui)">
+    <node pkg="qt_ros2_gui" exec="exec" name="qt_ros2_gui_node" output="screen">
+    </node>
+  </group>
+
+  <!-- Tf --> <!--HJK_250312_J-->
+  <group if="$(var launch_tf)">
+    <include file="$(find-pkg-share autoware_launch)/launch/tf.launch.xml">
+      <arg name="launch_sensing_driver" value="false"/>
+    </include>
+  </group>
 </launch>
