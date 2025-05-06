@@ -46,4 +46,7 @@
     <arg name="enable_predicted_path_checker" value="$(var enable_predicted_path_checker)"/>
     <arg name="predicted_path_checker_param_path" value="$(find-pkg-share autoware_launch)/config/control/predicted_path_checker/predicted_path_checker.param.yaml"/>
   </include>
+  
+  <node pkg="twist_controller" exec="twist_controller" name="twist_controller_node" output="screen">
+  </node>
 </launch>
