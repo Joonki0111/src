@@ -521,7 +521,7 @@ boost::optional<CrosswalkEdgePoints> isReachableCrosswalkEdgePoints(
 bool hasPotentialToReach(
   const TrackedObject & object, const Eigen::Vector2d & center_point,
   const Eigen::Vector2d & right_point, const Eigen::Vector2d & left_point,
-  const double time_horizon, const double min_object_vel,
+  [[maybe_unused]]const double time_horizon, const double min_object_vel,
   const double max_crosswalk_user_delta_yaw_threshold_for_lanelet)
 {
   const auto & obj_pos = object.kinematics.pose_with_covariance.pose.position;
@@ -531,7 +531,7 @@ bool hasPotentialToReach(
   constexpr double stop_velocity_th = 0.14;  // [m/s]
   const auto estimated_velocity = std::hypot(obj_vel.x, obj_vel.y);
   const auto is_stop_object = estimated_velocity < stop_velocity_th;
-  const auto velocity = std::max(min_object_vel, estimated_velocity);
+  [[maybe_unused]]const auto velocity = std::max(min_object_vel, estimated_velocity);
 
   const double pedestrian_to_crosswalk_center_direction =
     std::atan2(center_point.y() - obj_pos.y, center_point.x() - obj_pos.x);
@@ -573,8 +573,7 @@ bool hasPotentialToReach(
   const auto heading_for_crosswalk = std::abs(pedestrian_vel_angle_against_crosswalk) <
                                      max_crosswalk_user_delta_yaw_threshold_for_lanelet;
   const auto reachable = std::hypot(center_point.x() - obj_pos.x, center_point.y() - obj_pos.y) <
-                         velocity * time_horizon;
-
+                          5.0f;
   if (reachable && (heading_for_crosswalk || is_stop_object)) {
     return true;
   }
