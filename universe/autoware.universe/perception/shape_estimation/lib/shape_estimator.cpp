@@ -77,7 +77,7 @@ bool ShapeEstimator::estimateOriginalShapeAndPose(
   } else if (label == Label::PEDESTRIAN) {
     model_ptr.reset(new CylinderShapeModel());
   } else {
-    model_ptr.reset(new ConvexHullShapeModel());
+    model_ptr.reset(new BoundingBoxShapeModel());
   }
 
   return model_ptr->estimate(cluster, shape_output, pose_output);
