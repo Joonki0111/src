@@ -1083,20 +1083,28 @@ PredictedObject MapBasedPredictionNode::getPredictedObjectAsCrosswalkUser(
   if (crossing_crosswalk) {
     const auto edge_points = getCrosswalkEdgePoints(crossing_crosswalk.get());
 
-    if (hasPotentialToReach(
-          object, edge_points.front_center_point, edge_points.front_right_point,
-          edge_points.front_left_point, std::numeric_limits<double>::max(),
-          min_crosswalk_user_velocity_, max_crosswalk_user_delta_yaw_threshold_for_lanelet_)) {
+    const double front_to_back = std::atan2(edge_points.back_center_point.y() - edge_points.front_center_point.y(), 
+      edge_points.back_center_point.x() - edge_points.front_center_point.x());
+    const double back_to_front = std::atan2(edge_points.front_center_point.y() - edge_points.back_center_point.y(), 
+      edge_points.front_center_point.x() - edge_points.back_center_point.x());
+
+    const std::pair<double, double> obj_p1 = {predicted_object.kinematics.predicted_paths[0].path[0].position.x, 
+      predicted_object.kinematics.predicted_paths[0].path[0].position.y};
+    const std::pair<double, double> obj_p2 = {predicted_object.kinematics.predicted_paths[0].path.back().position.x, 
+      predicted_object.kinematics.predicted_paths[0].path.back().position.y};
+
+    const double obj_yaw_from_path = std::atan2(obj_p2.second - obj_p1.second, obj_p2.first - obj_p1.first);
+
+    if(std::abs(obj_yaw_from_path - back_to_front) < 0.2)
+    {
       PredictedPath predicted_path =
         path_generator_->generatePathToTargetPoint(object, edge_points.front_center_point);
       predicted_path.confidence = 1.0;
       predicted_object.kinematics.predicted_paths.push_back(predicted_path);
-    }
 
-    if (hasPotentialToReach(
-          object, edge_points.back_center_point, edge_points.back_right_point,
-          edge_points.back_left_point, std::numeric_limits<double>::max(),
-          min_crosswalk_user_velocity_, max_crosswalk_user_delta_yaw_threshold_for_lanelet_)) {
+    }
+    else if(std::abs(obj_yaw_from_path - front_to_back) < 0.2)
+    {
       PredictedPath predicted_path =
         path_generator_->generatePathToTargetPoint(object, edge_points.back_center_point);
       predicted_path.confidence = 1.0;
