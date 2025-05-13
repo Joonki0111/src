@@ -570,11 +570,11 @@ bool hasPotentialToReach(
     }
     return 0.0;
   }();
-  const auto heading_for_crosswalk = std::abs(pedestrian_vel_angle_against_crosswalk) <
+  [[maybe_unused]]const auto heading_for_crosswalk = std::abs(pedestrian_vel_angle_against_crosswalk) <
                                      max_crosswalk_user_delta_yaw_threshold_for_lanelet;
   const auto reachable = std::hypot(center_point.x() - obj_pos.x, center_point.y() - obj_pos.y) <
                           5.0f;
-  if (reachable && (heading_for_crosswalk || is_stop_object)) {
+  if (reachable && !is_stop_object) {
     return true;
   }
 
